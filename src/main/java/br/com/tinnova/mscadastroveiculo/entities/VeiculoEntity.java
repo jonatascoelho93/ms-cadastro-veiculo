@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Min;
 
 import lombok.Builder;
 import lombok.Getter;
@@ -26,8 +27,9 @@ public class VeiculoEntity implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private String veiculo;
+	private String modelo;
 	private String marca;
+	@Min(1900)
 	private Integer ano;
 	private String descricao;
 	private Boolean vendido;
