@@ -11,14 +11,19 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.Min;
 
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
 @Builder
+@AllArgsConstructor(access = AccessLevel.PACKAGE)
+@NoArgsConstructor(access = AccessLevel.PACKAGE)
 @Table(name = "veiculo")
 public class VeiculoEntity implements Serializable {
 

@@ -20,6 +20,11 @@ public class VeiculoService {
 
 	public List<VeiculoVO> getAll() {
 		List<VeiculoEntity> veiculos = veiculoRepository.findAll();
+		
+		
+		System.out.println(veiculos.stream().map(v -> coverterToVO(v)).collect(Collectors.toList()));
+		
+		
 		return veiculos.stream().map(v -> coverterToVO(v)).collect(Collectors.toList());
 	}
 
@@ -35,6 +40,7 @@ public class VeiculoService {
 
 	public void update(Long id, VeiculoVO veiculoVO) {
 		VeiculoEntity veiculoEntity = veiculoRepository.getById(id);
+		veiculoEntity.setDataAtualizacao(LocalDateTime.now());
 		veiculoEntity.setModelo(veiculoVO.getModelo());
 		veiculoEntity.setMarca(veiculoVO.getMarca());
 		veiculoEntity.setAno(veiculoVO.getAno());
@@ -45,6 +51,7 @@ public class VeiculoService {
 
 	public void updatePath(Long id, VeiculoVO veiculoVO) {
 		VeiculoEntity veiculoEntity = veiculoRepository.getById(id);
+		veiculoEntity.setDataAtualizacao(LocalDateTime.now());
 		if (StringUtils.isNotBlank(veiculoVO.getModelo()))
 			veiculoEntity.setModelo(veiculoVO.getModelo());
 		if (StringUtils.isNotBlank(veiculoVO.getMarca()))
